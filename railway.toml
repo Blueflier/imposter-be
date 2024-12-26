@@ -4,4 +4,4 @@ builder = "dockerfile"
 [deploy]
 startCommand = "node src/server.js"
 healthcheckPath = "/"
-restartPolicyType = "on-failure" 
+restartPolicy = "on_failure" 
