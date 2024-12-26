@@ -5,6 +5,7 @@ const EVENTS = {
   // Client -> Server
   JOIN: 'join',
   START_GAME: 'startGame',
+  NEXT_ROUND: 'nextRound',
   
   // Server -> Client
   GAME_STATE: 'gameState',

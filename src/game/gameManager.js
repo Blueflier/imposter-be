@@ -59,9 +59,9 @@ class GameManager {
     this.status = 'playing';
     
     const randomIndex = Math.floor(Math.random() * subjects.length);
-    const { subject, message } = subjects[randomIndex];
+    const { subject, messages } = subjects[randomIndex];
     this.currentSubject = subject;
-    this.currentMessage = message;
+    this.currentMessage = messages[Math.floor(Math.random() * messages.length)];
     
     const playerIds = Array.from(this.players.keys());
     this.imposterPlayerId = playerIds[Math.floor(Math.random() * playerIds.length)];

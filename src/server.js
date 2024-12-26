@@ -40,6 +40,16 @@ io.on('connection', (socket) => {
     }
   });
 
+  socket.on(EVENTS.NEXT_ROUND, () => {
+    // Verify that only the host can trigger a new round
+    if (gameManager.isPlayerHost(socket.id) && gameManager.startNewRound()) {
+      // Send personalized state to each player with their new roles and messages
+      gameManager.players.forEach((_, playerId) => {
+        io.to(playerId).emit(EVENTS.GAME_STATE, gameManager.getPlayerState(playerId));
+      });
+    }
+  });
+
   socket.on('disconnect', () => {
     gameManager.removePlayer(socket.id);
     // Notify all remaining players of the state change
